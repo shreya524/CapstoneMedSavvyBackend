@@ -3,6 +3,7 @@ package com.webapp.medSavvy.controller;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
@@ -21,13 +22,15 @@ import com.webapp.medSavvy.service.userservice;
 
 @RestController
 @RequestMapping(path = "/user")
+@CrossOrigin
 public class UserController {
 	@Autowired
 	private userservice UserService;
+	
 
 //Login user
-	@CrossOrigin(origins = "http://localhost:4200")
 	@PostMapping("/login-user")
+	@CrossOrigin
 	public String loginuser(@RequestBody User user) throws Exception {
 
 		String temp_username = user.getUsername();
@@ -44,20 +47,21 @@ public class UserController {
 				throw new Exception("Invalid credetionals");
 			}
 		}
-		return ("<h1> Your are logged in <h1>");
+		return ("authenticated successfully");
 
 	}
 
 //Register New user
 	
-	@CrossOrigin(origins = "http://localhost:4200")
+	@CrossOrigin
 	@PostMapping("/register-user")
-	@Transactional
 	public User registeruser(@RequestBody User user) throws Exception {
 		String temp_username = user.getUsername();
 		String temp_password = user.getPassword();
 		String temp_firstname = user.getFirstname();
 		String temp_lastname = user.getLastname();
+		String temp_role = "User";
+		user.setRole(temp_role);
 		if ("".equals(temp_username)) {
 			throw new Exception("Please enter Username");
 		} else if ("".equals(temp_password)) {
@@ -72,6 +76,8 @@ public class UserController {
 				throw new Exception("Username already exists");
 			}
 		}
+		
+		
 		return UserService.registeruser(user);
 	}
 

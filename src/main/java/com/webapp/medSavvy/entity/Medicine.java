@@ -27,84 +27,82 @@ public class Medicine {
 	@Column(name = "meddosageform")
 	private String meddosageform;
 
-	@Column(name = "medinvqty")
-	private String medinvqty;
+	@Column(name = "medinvqty", columnDefinition = "int default 10")
+	private int medinvqty;
 
-	@Column(name = "medunitprice")
-	private Double meduprice;
+	@Column(name = "medunitprice", precision = 10, scale = 2)
+	private Double medunitprice;
 
 // default constructor
 	public Medicine() {
 	}
 
-public Medicine(long iD, String medname, String medbrand, String medtype, String meddosageform, String medinvqty,
-		Double meduprice) {
-	super();
-	ID = iD;
-	this.medname = medname;
-	this.medbrand = medbrand;
-	this.medtype = medtype;
-	this.meddosageform = meddosageform;
-	this.medinvqty = medinvqty;
-	this.meduprice = meduprice;
-}
+	public Medicine(long iD, String medname, String medbrand, String medtype, String meddosageform, int medinvqty,
+			Double medunitprice) {
+		super();
+		ID = iD;
+		this.medname = medname;
+		this.medbrand = medbrand;
+		this.medtype = medtype;
+		this.meddosageform = meddosageform;
+		this.medinvqty = medinvqty;
+		this.medunitprice = medunitprice;
+	}
 
-public long getID() {
-	return ID;
-}
+	public long getID() {
+		return ID;
+	}
 
-public void setID(long iD) {
-	ID = iD;
-}
+	public void setID(long iD) {
+		ID = iD;
+	}
 
-public String getMedname() {
-	return medname;
-}
+	public String getMedname() {
+		return medname;
+	}
 
-public void setMedname(String medname) {
-	this.medname = medname;
-}
+	public void setMedname(String medname) {
+		this.medname = medname;
+	}
 
-public String getMedbrand() {
-	return medbrand;
-}
+	public String getMedbrand() {
+		return medbrand;
+	}
 
-public void setMedbrand(String medbrand) {
-	this.medbrand = medbrand;
-}
+	public void setMedbrand(String medbrand) {
+		this.medbrand = medbrand;
+	}
 
-public String getMedtype() {
-	return medtype;
-}
+	public String getMedtype() {
+		return medtype;
+	}
 
-public void setMedtype(String medtype) {
-	this.medtype = medtype;
-}
+	public void setMedtype(String medtype) {
+		this.medtype = medtype;
+	}
 
-public String getMeddosageform() {
-	return meddosageform;
-}
+	public String getMeddosageform() {
+		return meddosageform;
+	}
 
-public void setMeddosageform(String meddosageform) {
-	this.meddosageform = meddosageform;
-}
+	public void setMeddosageform(String meddosageform) {
+		this.meddosageform = meddosageform;
+	}
 
-public String getMedinvqty() {
-	return medinvqty;
-}
+	public int getMedinvqty() {
+		return medinvqty;
+	}
 
-public void setMedinvqty(String medinvqty) {
-	this.medinvqty = medinvqty;
-}
+	public void setMedinvqty(int medinvqty) {
+		this.medinvqty = medinvqty;
+	}
 
-public Double getMeduprice() {
-	return meduprice;
-}
+	public Double getMedunitprice() {
+		return medunitprice;
+	}
 
-public void setMeduprice(Double meduprice) {
-	this.meduprice = meduprice;
-}
-
-	
+	public void setMedunitprice(Double medunitprice) {
+		this.medunitprice = medunitprice;
+	}
 
 }
